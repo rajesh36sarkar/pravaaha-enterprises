@@ -3,16 +3,24 @@ import Footer from "@/components/Footer";
 import "./globals.css";
 
 export const metadata = {
-  title: "Pravaaha Enterprises | Sarees & Digital Services",
+  title: "Pravaaha Enterprises | Trusted Sarees & Digital Services",
   description:
-    "Pravaaha Enterprises - Your destination for premium sarees under Akalpa brand and professional digital services. Based in Kalna, West Bengal.",
+    "Pravaaha Enterprises - Premium Bengal sarees under Akalpa brand and professional digital services by Rajesh Kumar Sarkar. Based in Kalna, West Bengal.",
   keywords: [
-    "sarees",
-    "Kalna sarees",
-    "Akalpa by Pravaaha",
-    "Pravaaha Digital",
+    "Pravaaha Enterprises",
+    "Akalpa sarees",
     "Bengal sarees",
+    "digital services",
+    "Kalna",
+    "West Bengal",
   ],
+  openGraph: {
+    title: "Pravaaha Enterprises | Trusted Sarees & Digital Services",
+    description: "Premium sarees and digital services from Kalna, West Bengal",
+    url: "https://thepravaaha.com",
+    siteName: "Pravaaha Enterprises",
+    type: "website",
+  },
 };
 
 export default function RootLayout({ children }) {
