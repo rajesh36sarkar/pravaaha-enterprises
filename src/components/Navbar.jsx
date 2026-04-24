@@ -58,7 +58,7 @@ export default function Navbar() {
           <div className="flex-shrink-0 flex items-center">
             <Link href="/" className="relative block w-40 h-10 sm:w-48 sm:h-12 md:w-56 md:h-14">
               <Image 
-                src="/nav-logo.jpeg" 
+                src="/logo.png" 
                 alt="Pravaaha Enterprises" 
                 fill 
                 className="object-contain object-left" 

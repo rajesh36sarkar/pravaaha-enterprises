@@ -14,7 +14,7 @@ export default function Footer() {
             {/* FIXED: Removed nested links and "P" badge, kept only the clean image logo */}
             <Link href="/" className="relative block w-40 h-10 sm:w-48 sm:h-12 md:w-56 md:h-14 mb-6 transition-transform duration-300 hover:scale-105">
               <Image 
-                src="/footer-logo.jpeg" 
+                src="/logo.png" 
                 alt="Pravaaha Enterprises" 
                 fill 
                 className="object-contain object-left" 
