@@ -1,5 +1,5 @@
 import Link from "next/link";
-// import { Monitor, Video, Code, PenTool, Camera, Headphones, TrendingUp, Youtube } from "lucide-react";
+import { CodeXml, Monitor, PenTool, Camera, Headphones, TrendingUp, Play } from "lucide-react";
 
 export const metadata = {
   title: "Pravaaha Digital | Professional Freelancing & YouTube Services",
@@ -9,18 +9,16 @@ export const metadata = {
 
 const services = [
   {
-    icon: <Code className="w-6 h-6" />,
+    icon: <CodeXml className="w-6 h-6" />,
     title: "Web Development",
     description: "Custom websites and web applications using MERN stack, Next.js, and modern technologies.",
-    color: "bg-blue-500",
     bg: "bg-blue-50",
     text: "text-blue-600",
   },
   {
-    icon: <Youtube className="w-6 h-6" />,
+    icon: <Play className="w-6 h-6" />,
     title: "YouTube Content",
     description: "Engaging video content creation, editing, and channel management for growth.",
-    color: "bg-red-500",
     bg: "bg-red-50",
     text: "text-red-600",
   },
@@ -28,7 +26,6 @@ const services = [
     icon: <PenTool className="w-6 h-6" />,
     title: "Graphic Design",
     description: "Eye-catching designs for social media, branding, and marketing materials.",
-    color: "bg-purple-500",
     bg: "bg-purple-50",
     text: "text-purple-600",
   },
@@ -36,7 +33,6 @@ const services = [
     icon: <Camera className="w-6 h-6" />,
     title: "Video Editing",
     description: "Professional video editing with effects, transitions, and color grading.",
-    color: "bg-orange-500",
     bg: "bg-orange-50",
     text: "text-orange-600",
   },
@@ -44,7 +40,6 @@ const services = [
     icon: <TrendingUp className="w-6 h-6" />,
     title: "Digital Marketing",
     description: "SEO, social media marketing, and online presence building for businesses.",
-    color: "bg-green-500",
     bg: "bg-green-50",
     text: "text-green-600",
   },
@@ -52,7 +47,6 @@ const services = [
     icon: <Headphones className="w-6 h-6" />,
     title: "Tech Support",
     description: "Remote technical support, troubleshooting, and IT consultation services.",
-    color: "bg-teal-500",
     bg: "bg-teal-50",
     text: "text-teal-600",
   },
@@ -67,7 +61,7 @@ export default function DigitalPage() {
           <span className="inline-block px-4 py-1.5 bg-blue-100 text-blue-800 text-sm font-semibold rounded-full mb-4">
             Pravaaha Digital
           </span>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#11120D] mb-4">
             Digital Services
           </h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed mb-8">
@@ -76,7 +70,7 @@ export default function DigitalPage() {
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition-all duration-300 shadow-lg"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-[#11120D] text-white font-semibold rounded-xl hover:bg-[#C58718] transition-all duration-300 shadow-lg"
           >
             Work With Me
           </Link>
@@ -87,7 +81,7 @@ export default function DigitalPage() {
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#11120D] mb-4">
               Services I Offer
             </h2>
             <p className="text-lg text-gray-600">
@@ -104,7 +98,7 @@ export default function DigitalPage() {
                 <div className={`w-14 h-14 ${service.bg} rounded-2xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300`}>
                   <div className={service.text}>{service.icon}</div>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
+                <h3 className="text-xl font-bold text-[#11120D] mb-3">
                   {service.title}
                 </h3>
                 <p className="text-gray-600 leading-relaxed text-sm">
@@ -119,7 +113,7 @@ export default function DigitalPage() {
       {/* YouTube CTA */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-red-500 to-red-600">
         <div className="max-w-4xl mx-auto text-center">
-          <Youtube className="w-16 h-16 text-white mx-auto mb-6" />
+          <span className="text-6xl block mb-4">▶️</span>
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             Subscribe to My YouTube Channel
           </h2>
@@ -130,7 +124,6 @@ export default function DigitalPage() {
             href="#"
             className="inline-flex items-center gap-2 px-8 py-4 bg-white text-red-600 font-bold rounded-xl hover:bg-red-50 transition-all duration-300 shadow-lg"
           >
-            <Youtube className="w-5 h-5" />
             Visit Channel
           </a>
         </div>
