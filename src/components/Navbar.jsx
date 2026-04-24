@@ -10,9 +10,7 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 10);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -30,133 +28,131 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 w-full z-50 smooth-transition ${
-        scrolled
-          ? "bg-white/95 backdrop-blur-md shadow-lg"
-          : "bg-white shadow-sm"
+      className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
+        scrolled ? "bg-white/95 backdrop-blur-md shadow-lg" : "bg-white"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2 group">
-            <div className="w-8 h-8 bg-[#1a365d] rounded-lg flex items-center justify-center smooth-transition group-hover:bg-[#2b6cb0]">
-              <span className="text-[#e8b86d] font-bold text-sm">P</span>
+          <Link href="/" className="flex items-center gap-2 flex-shrink-0">
+            <div className="w-8 h-8 bg-[#C58718] rounded-lg flex items-center justify-center">
+              <span className="text-[#11120D] font-bold text-sm">P</span>
             </div>
-            <div>
-              <span className="text-xl font-bold text-[#1a365d]">Pravaaha</span>
-              <span className="text-xs text-[#718096] hidden sm:block -mt-1">
-                Enterprises
-              </span>
-            </div>
+            <span className="text-lg font-bold text-[#11120D] hidden sm:block">
+              Pravaaha
+            </span>
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-1">
+          {/* Desktop */}
+          <div className="hidden md:flex items-center gap-0.5">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="px-4 py-2 text-[#1a202c] hover:text-[#2b6cb0] hover:bg-[#f7fafc] rounded-lg smooth-transition font-medium text-sm"
+                className="px-3 py-2 text-sm font-medium text-[#11120D] hover:text-[#C58718] rounded-lg hover:bg-gray-50 transition-all"
               >
                 {link.label}
               </Link>
             ))}
 
             {/* Brands Dropdown */}
-            <div className="relative ml-2">
+            <div className="relative">
               <button
                 onClick={() => setBrandsOpen(!brandsOpen)}
-                className="flex items-center px-4 py-2 text-[#1a202c] hover:text-[#2b6cb0] hover:bg-[#f7fafc] rounded-lg smooth-transition font-medium text-sm"
+                className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-[#11120D] hover:text-[#C58718] rounded-lg hover:bg-gray-50 transition-all"
               >
                 Brands
                 <ChevronDown
-                  className={`w-4 h-4 ml-1 smooth-transition ${
+                  className={`w-3.5 h-3.5 transition-transform ${
                     brandsOpen ? "rotate-180" : ""
                   }`}
                 />
               </button>
 
               {brandsOpen && (
-                <div className="absolute right-0 mt-2 w-72 bg-white rounded-xl shadow-2xl border border-gray-100 py-2 animate-scale-in overflow-hidden">
-                  {brandLinks.map((brand) => (
-                    <Link
-                      key={brand.href}
-                      href={brand.href}
-                      className="block px-4 py-3 hover:bg-[#f7fafc] smooth-transition border-l-2 border-transparent hover:border-[#2b6cb0]"
-                      onClick={() => setBrandsOpen(false)}
-                    >
-                      <div className="font-semibold text-[#1a202c]">
-                        {brand.label}
-                      </div>
-                      <div className="text-sm text-[#718096]">{brand.sub}</div>
-                    </Link>
-                  ))}
-                </div>
+                <>
+                  <div
+                    className="fixed inset-0 z-10"
+                    onClick={() => setBrandsOpen(false)}
+                  />
+                  <div className="absolute right-0 mt-2 w-64 bg-white rounded-xl shadow-2xl border border-gray-100 py-2 z-20">
+                    {brandLinks.map((brand) => (
+                      <Link
+                        key={brand.href}
+                        href={brand.href}
+                        className="block px-4 py-3 hover:bg-gray-50 border-l-2 border-transparent hover:border-[#C58718] transition-all"
+                        onClick={() => setBrandsOpen(false)}
+                      >
+                        <div className="font-semibold text-sm text-[#11120D]">
+                          {brand.label}
+                        </div>
+                        <div className="text-xs text-gray-500">{brand.sub}</div>
+                      </Link>
+                    ))}
+                  </div>
+                </>
               )}
             </div>
 
-            {/* CTA Button */}
             <Link
               href="/contact"
-              className="ml-4 px-6 py-2 bg-[#1a365d] text-white rounded-lg hover:bg-[#2b6cb0] smooth-transition font-semibold text-sm shadow-md hover:shadow-lg"
+              className="ml-3 px-5 py-2 bg-[#C58718] text-white text-sm font-semibold rounded-lg hover:bg-[#F8D05F] hover:text-[#11120D] transition-all"
             >
               Get in Touch
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Toggle */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden text-[#1a365d] hover:text-[#2b6cb0] smooth-transition"
+            className="md:hidden p-2 text-[#11120D] hover:bg-gray-100 rounded-lg transition-all"
           >
-            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
+      </div>
 
-        {/* Mobile Navigation */}
-        <div
-          className={`md:hidden overflow-hidden smooth-transition ${
-            isOpen ? "max-h-96 pb-4" : "max-h-0"
-          }`}
-        >
-          <div className="pt-4 space-y-1 border-t border-gray-100">
+      {/* Mobile Menu */}
+      {isOpen && (
+        <div className="md:hidden border-t border-gray-100 bg-white">
+          <div className="px-4 py-3 space-y-1">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="block px-4 py-3 text-[#1a202c] hover:bg-[#f7fafc] rounded-lg smooth-transition"
+                className="block px-3 py-2.5 text-sm font-medium text-[#11120D] hover:bg-gray-50 rounded-lg transition-all"
                 onClick={() => setIsOpen(false)}
               >
                 {link.label}
               </Link>
             ))}
-
-            <div className="px-4 py-2 text-xs font-semibold text-[#718096] uppercase tracking-wider">
+            <div className="px-3 pt-3 pb-1 text-xs font-semibold text-gray-400 uppercase tracking-wider">
               Brands
             </div>
             {brandLinks.map((brand) => (
               <Link
                 key={brand.href}
                 href={brand.href}
-                className="block px-4 py-3 text-[#1a202c] hover:bg-[#f7fafc] rounded-lg smooth-transition border-l-2 border-transparent hover:border-[#2b6cb0]"
+                className="block px-3 py-2.5 hover:bg-gray-50 rounded-lg border-l-2 border-transparent hover:border-[#C58718] transition-all"
                 onClick={() => setIsOpen(false)}
               >
-                <div className="font-medium">{brand.label}</div>
-                <div className="text-sm text-[#718096]">{brand.sub}</div>
+                <div className="font-medium text-sm text-[#11120D]">
+                  {brand.label}
+                </div>
+                <div className="text-xs text-gray-500">{brand.sub}</div>
               </Link>
             ))}
-
             <Link
               href="/contact"
-              className="block mx-4 mt-4 px-6 py-3 bg-[#1a365d] text-white rounded-lg hover:bg-[#2b6cb0] smooth-transition text-center font-semibold"
+              className="block mt-3 px-3 py-2.5 bg-[#C58718] text-white text-sm font-semibold rounded-lg text-center hover:bg-[#F8D05F] hover:text-[#11120D] transition-all"
               onClick={() => setIsOpen(false)}
             >
               Get in Touch
             </Link>
           </div>
         </div>
-      </div>
+      )}
     </nav>
   );
 };

@@ -1,9 +1,14 @@
-import Image from "next/image";
+import Link from "next/link";
+import { Star, Award, Truck, Sparkles, ArrowRight } from "lucide-react";
+import { generateMetadata, generateFAQSchema, getPageKeywords } from "@/utils/seo";
 
-export const metadata = {
-  title: "Akalpa by Pravaaha | Premium Bengal Sarees",
-  description: "Discover our exquisite collection of traditional Bengal sarees. Each piece crafted with heritage and elegance.",
-};
+// SEO Metadata
+export const metadata = generateMetadata({
+  title: "Akalpa by Pravaaha | Premium Bengal Sarees Collection",
+  description:
+    "Discover exquisite Bengal sarees - Kantha, Baluchari, Tant, Jamdani. Handpicked quality, authentic weaves from Kalna.",
+  keywords: getPageKeywords("sarees"),
+});
 
 const sareeCollection = [
   {
@@ -12,6 +17,8 @@ const sareeCollection = [
     category: "Silk",
     price: "₹2,499",
     description: "Hand-stitched Kantha work on pure silk, a timeless classic from Bengal.",
+    gradient: "from-amber-50 to-yellow-100",
+    badge: "Bestseller",
   },
   {
     id: 2,
@@ -19,6 +26,7 @@ const sareeCollection = [
     category: "Silk",
     price: "₹4,999",
     description: "Intricate Baluchari weave depicting mythological scenes on rich silk.",
+    gradient: "from-purple-50 to-violet-100",
   },
   {
     id: 3,
@@ -26,13 +34,16 @@ const sareeCollection = [
     category: "Cotton",
     price: "₹899",
     description: "Lightweight Bengal Tant cotton saree, perfect for daily wear and summer days.",
+    gradient: "from-emerald-50 to-teal-100",
   },
   {
     id: 4,
     name: "Jamdani Artisan",
-    category: "Cotton",
+    category: "Jamdani",
     price: "₹3,499",
     description: "Handwoven Jamdani with geometric patterns, a UNESCO heritage masterpiece.",
+    gradient: "from-sky-50 to-blue-100",
+    badge: "Heritage",
   },
   {
     id: 5,
@@ -40,6 +51,7 @@ const sareeCollection = [
     category: "Silk",
     price: "₹5,999",
     description: "Royal Murshidabad silk saree with zari border, fit for special occasions.",
+    gradient: "from-red-50 to-rose-100",
   },
   {
     id: 6,
@@ -47,95 +59,144 @@ const sareeCollection = [
     category: "Cotton",
     price: "₹1,499",
     description: "Fine Dhakai weave with delicate motifs, light as a breeze.",
+    gradient: "from-orange-50 to-amber-100",
+  },
+];
+
+const features = [
+  {
+    icon: Star,
+    title: "Handpicked Quality",
+    desc: "Each saree is personally selected for quality and craftsmanship",
+  },
+  {
+    icon: Award,
+    title: "Authentic Weaves",
+    desc: "Direct from traditional weavers of Bengal",
+  },
+  {
+    icon: Truck,
+    title: "Fast Delivery",
+    desc: "Quick and safe delivery across India",
   },
 ];
 
 export default function SareesPage() {
+  const faqSchema = generateFAQSchema([
+    {
+      question: "What types of sarees do you sell?",
+      answer:
+        "We sell premium Bengal sarees including Kantha Stitch Silk, Baluchari, Tant Cotton, Jamdani, Murshidabad Silk, and Dhakai weaves.",
+    },
+    {
+      question: "Where are you located?",
+      answer:
+        "We are based in Kalna, Purba Bardhaman, West Bengal - 713409. We ship across India.",
+    },
+  ]);
+
   return (
-    <div>
-      {/* Hero Banner */}
-      <section className="bg-gradient-to-r from-pink-600 to-rose-700 text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
+    <>
+      {/* JSON-LD Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+
+      {/* Header */}
+      <section className="relative pt-28 pb-16 px-4 bg-gradient-to-b from-[#F8D05F]/10 to-white">
+        <div className="max-w-3xl mx-auto text-center">
+          <span className="inline-flex items-center gap-1.5 px-4 py-1.5 bg-[#C58718]/10 text-[#C58718] text-xs font-semibold rounded-full uppercase tracking-wider mb-4 border border-[#C58718]/20">
+            <Sparkles className="w-3.5 h-3.5" />
             Akalpa by Pravaaha
+          </span>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#11120D] mb-4 leading-tight">
+            Our Saree Collection
           </h1>
-          <p className="text-xl text-pink-100 max-w-2xl mx-auto">
-            Where tradition meets elegance. Discover our handpicked collection of
-            Bengal's finest sarees.
+          <p className="text-base sm:text-lg text-gray-500 max-w-xl mx-auto leading-relaxed">
+            Where tradition meets elegance. Handpicked collection of Bengal's
+            finest sarees, crafted with love and heritage.
           </p>
         </div>
       </section>
 
-      {/* Collection Grid */}
-      <section className="py-16 px-4 bg-gray-50">
+      {/* Saree Grid */}
+      <section className="py-12 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {sareeCollection.map((saree) => (
-              <div
+              <article
                 key={saree.id}
-                className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group"
+                className="group relative bg-white rounded-2xl border border-gray-100 overflow-hidden hover:border-[#C58718]/30 hover:shadow-xl transition-all duration-300 flex flex-col"
               >
-                {/* Image Placeholder */}
-                <div className="h-64 bg-gradient-to-br from-pink-100 to-pink-200 flex items-center justify-center">
-                  <span className="text-6xl">🥻</span>
-                </div>
+                {/* Image / Gradient Placeholder */}
+                <div
+                  className={`relative h-56 bg-gradient-to-br ${saree.gradient} flex items-center justify-center overflow-hidden`}
+                >
+                  <span className="text-5xl opacity-30 group-hover:scale-110 transition-transform duration-500">
+                    🥻
+                  </span>
 
-                <div className="p-6">
-                  <span className="text-xs font-semibold text-pink-600 uppercase tracking-wider">
+                  {/* Category Tag */}
+                  <span className="absolute top-3 left-3 px-2.5 py-0.5 bg-white/90 backdrop-blur-sm text-[#11120D] text-[11px] font-medium rounded-full">
                     {saree.category}
                   </span>
-                  <h3 className="text-xl font-bold text-gray-900 mt-2 mb-2">
+
+                  {/* Badge */}
+                  {saree.badge && (
+                    <span className="absolute top-3 right-3 px-2.5 py-0.5 bg-[#C58718] text-white text-[10px] font-bold rounded-full uppercase tracking-wider">
+                      {saree.badge}
+                    </span>
+                  )}
+                </div>
+
+                {/* Content */}
+                <div className="p-5 flex flex-col flex-grow">
+                  <h3 className="text-lg font-bold text-[#11120D] mb-1.5 group-hover:text-[#C58718] transition-colors">
                     {saree.name}
                   </h3>
-                  <p className="text-gray-600 mb-4 text-sm">
+                  <p className="text-gray-500 text-sm leading-relaxed mb-4 flex-grow">
                     {saree.description}
                   </p>
-                  <div className="flex items-center justify-between">
-                    <span className="text-2xl font-bold text-pink-600">
+
+                  <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+                    <span className="text-xl font-bold text-[#C58718]">
                       {saree.price}
                     </span>
-                    <button className="bg-pink-600 text-white px-4 py-2 rounded-lg hover:bg-pink-700 transition-colors text-sm font-semibold">
-                      Inquire Now
-                    </button>
+                    <Link
+                      href="/contact"
+                      className="inline-flex items-center gap-1.5 px-4 py-2 bg-[#11120D] text-white text-sm font-medium rounded-xl hover:bg-[#C58718] transition-all duration-300"
+                    >
+                      Inquire
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </Link>
                   </div>
                 </div>
-              </div>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-16 px-4 bg-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-8 text-gray-800">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-2xl sm:text-3xl font-bold text-[#11120D] text-center mb-10">
             Why Choose Akalpa?
           </h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div>
-              <div className="text-4xl mb-3">🧵</div>
-              <h3 className="font-semibold text-lg mb-2">Handpicked Quality</h3>
-              <p className="text-gray-600 text-sm">
-                Each saree is personally selected for quality and craftsmanship
-              </p>
-            </div>
-            <div>
-              <div className="text-4xl mb-3">🏆</div>
-              <h3 className="font-semibold text-lg mb-2">Authentic Weaves</h3>
-              <p className="text-gray-600 text-sm">
-                Direct from traditional weavers of Bengal
-              </p>
-            </div>
-            <div>
-              <div className="text-4xl mb-3">💝</div>
-              <h3 className="font-semibold text-lg mb-2">Customer Love</h3>
-              <p className="text-gray-600 text-sm">
-                Satisfied customers across India trust our collection
-              </p>
-            </div>
+          <div className="grid sm:grid-cols-3 gap-6">
+            {features.map((item, i) => (
+              <div key={i} className="text-center p-6 bg-white rounded-2xl border border-gray-100 hover:shadow-md hover:border-[#F8D05F]/30 transition-all duration-300">
+                <div className="w-12 h-12 bg-[#F8D05F]/20 rounded-xl flex items-center justify-center mx-auto mb-3">
+                  <item.icon className="w-5 h-5 text-[#C58718]" />
+                </div>
+                <h3 className="font-semibold text-[#11120D] mb-1">{item.title}</h3>
+                <p className="text-gray-500 text-sm">{item.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
-    </div>
+    </>
   );
 }

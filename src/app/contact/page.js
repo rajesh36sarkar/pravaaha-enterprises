@@ -8,109 +8,101 @@ export const metadata = {
 
 export default function ContactPage() {
   return (
-    <div>
-      {/* Hero */}
-      <section className="bg-gradient-to-r from-blue-600 to-purple-700 text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Contact Us</h1>
-          <p className="text-xl text-blue-100">
+    <>
+      {/* Page Header */}
+      <section className="pt-24 pb-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-50 to-indigo-50">
+        <div className="max-w-7xl mx-auto text-center">
+          <span className="inline-block px-4 py-1.5 bg-blue-100 text-blue-800 text-sm font-semibold rounded-full mb-4">
+            Get In Touch
+          </span>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4">
+            Contact Us
+          </h1>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
             We'd love to hear from you. Reach out today!
           </p>
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section className="py-16 px-4">
+      {/* Contact Content */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12">
-            {/* Contact Information */}
-            <div>
-              <h2 className="text-3xl font-bold mb-8 text-gray-800">
-                Get In Touch
+          <div className="grid lg:grid-cols-5 gap-12">
+            {/* Contact Info - 2 columns */}
+            <div className="lg:col-span-2">
+              <h2 className="text-2xl font-bold text-gray-900 mb-8">
+                Contact Information
               </h2>
 
               <div className="space-y-6">
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <MapPin className="w-6 h-6 text-blue-600" />
+                {[
+                  {
+                    icon: <MapPin className="w-5 h-5" />,
+                    bg: "bg-blue-100",
+                    text: "text-blue-600",
+                    title: "Address",
+                    content: "Shyamganj Para, Kalna, Purba Bardhaman, West Bengal – 713409",
+                  },
+                  {
+                    icon: <Phone className="w-5 h-5" />,
+                    bg: "bg-green-100",
+                    text: "text-green-600",
+                    title: "Phone",
+                    content: "+91 XXXXXXXXXX",
+                  },
+                  {
+                    icon: <Mail className="w-5 h-5" />,
+                    bg: "bg-purple-100",
+                    text: "text-purple-600",
+                    title: "Email",
+                    content: "contact@thepravaaha.com",
+                  },
+                  {
+                    icon: <Clock className="w-5 h-5" />,
+                    bg: "bg-orange-100",
+                    text: "text-orange-600",
+                    title: "Business Hours",
+                    content: "Monday - Saturday: 10:00 AM - 8:00 PM\nSunday: Closed",
+                  },
+                ].map((item, index) => (
+                  <div key={index} className="flex gap-4">
+                    <div className={`w-12 h-12 ${item.bg} rounded-xl flex items-center justify-center flex-shrink-0`}>
+                      <div className={item.text}>{item.icon}</div>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-gray-900">{item.title}</h3>
+                      <p className="text-gray-600 text-sm whitespace-pre-line">{item.content}</p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-800 mb-1">Address</h3>
-                    <p className="text-gray-600">
-                      Shyamganj Para<br />
-                      Kalna, Purba Bardhaman<br />
-                      West Bengal – 713409
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Phone className="w-6 h-6 text-green-600" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-800 mb-1">Phone</h3>
-                    <p className="text-gray-600">+91 XXXXXXXXXX</p>
-                    <p className="text-sm text-gray-400 mt-1">
-                      Available during business hours
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Mail className="w-6 h-6 text-purple-600" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-800 mb-1">Email</h3>
-                    <p className="text-gray-600">contact@thepravaaha.com</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Clock className="w-6 h-6 text-orange-600" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-800 mb-1">
-                      Business Hours
-                    </h3>
-                    <p className="text-gray-600">
-                      Monday - Saturday: 10:00 AM - 8:00 PM<br />
-                      Sunday: Closed
-                    </p>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
 
-            {/* Contact Form */}
-            <div>
-              <h2 className="text-3xl font-bold mb-8 text-gray-800">
+            {/* Contact Form - 3 columns */}
+            <div className="lg:col-span-3">
+              <h2 className="text-2xl font-bold text-gray-900 mb-8">
                 Send a Message
               </h2>
-              <ContactForm />
+              <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-8">
+                <ContactForm />
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Map Placeholder */}
-      <section className="py-16 px-4 bg-gray-50">
-        <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-4 text-gray-800">
-            Visit Us
-          </h2>
-          <p className="text-gray-600 mb-8">
-            Located in the heart of Kalna town, Purba Bardhaman
-          </p>
-          <div className="bg-gray-200 rounded-xl h-64 flex items-center justify-center">
-            <span className="text-gray-400 text-lg">
-              🗺️ Google Maps will be embedded here
-            </span>
+      {/* Map Section */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-bold text-gray-900">Visit Us</h2>
+            <p className="text-gray-600 mt-2">Located in the heart of Kalna town, Purba Bardhaman</p>
+          </div>
+          <div className="bg-gray-200 rounded-2xl h-80 flex items-center justify-center">
+            <span className="text-gray-500 text-lg">📍 Google Maps will be embedded here</span>
           </div>
         </div>
       </section>
-    </div>
+    </>
   );
 }
