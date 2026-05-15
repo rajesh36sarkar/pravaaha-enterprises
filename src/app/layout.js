@@ -1,29 +1,37 @@
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import "./globals.css";
+import { Inter, Poppins } from 'next/font/google'
+import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
+import './globals.css'
+
+const inter = Inter({ 
+  subsets: ['latin'], 
+  variable: '--font-inter',
+  display: 'swap'
+})
+
+const poppins = Poppins({ 
+  weight: ['400', '500', '600', '700', '800'],
+  subsets: ['latin'],
+  variable: '--font-poppins',
+  display: 'swap'
+})
 
 export const metadata = {
-  metadataBase: new URL("https://thepravaaha.com"),
-  title: {
-    default: "Pravaaha Digital | Web & App Development",
-    template: "%s | Pravaaha Digital",
-  },
-  description:
-    "Professional web development, app development, and custom digital solutions by Rajesh Kumar Sarkar. Based in Kalna, WB.",
-  icons: { icon: "/favicon-new.png", shortcut: "/favicon-new.png", apple: "/favicon-new.png" },
-};
+  title: 'Pravaaha Digital - Digital Services & Solutions',
+  description: 'Transform your digital presence with Pravaaha Digital. We offer cutting-edge web development, design, and digital marketing services.',
+  keywords: 'digital services, web development, design, marketing, Pravaaha',
+}
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body 
-        className="bg-white text-[#11120D] antialiased flex flex-col min-h-screen"
-        suppressHydrationWarning
-      >
+      <body className={`${inter.variable} ${poppins.variable} font-sans`} suppressHydrationWarning>
         <Navbar />
-        <main className="flex-grow">{children}</main>
+        <main className="min-h-screen">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>
-  );
+  )
 }

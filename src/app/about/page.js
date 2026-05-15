@@ -1,71 +1,150 @@
-"use client";
-import { MapPin, User, Briefcase, Award } from "lucide-react";
-import { motion } from "framer-motion";
+'use client'
+import { motion } from 'framer-motion'
+import { FaUsers, FaAward, FaGlobe, FaHandshake } from 'react-icons/fa'
+import CTASection from '@/components/CTASection'
+
+const stats = [
+  { icon: FaUsers, value: '50+', label: 'Team Members' },
+  { icon: FaAward, value: '150+', label: 'Projects Delivered' },
+  { icon: FaGlobe, value: '20+', label: 'Countries Served' },
+  { icon: FaHandshake, value: '99%', label: 'Client Satisfaction' },
+]
+
+const values = [
+  {
+    title: 'Innovation',
+    description: 'We embrace cutting-edge technologies to deliver innovative solutions.',
+    color: 'from-blue-500 to-cyan-500',
+  },
+  {
+    title: 'Quality',
+    description: 'We maintain the highest standards in every project we deliver.',
+    color: 'from-purple-500 to-pink-500',
+  },
+  {
+    title: 'Collaboration',
+    description: 'We work closely with our clients as trusted partners.',
+    color: 'from-green-500 to-emerald-500',
+  },
+  {
+    title: 'Integrity',
+    description: 'We believe in transparent and honest communication.',
+    color: 'from-orange-500 to-red-500',
+  },
+]
 
 export default function AboutPage() {
-  const fadeIn = { hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6 } } };
-
   return (
-    <>
-      <section className="pt-32 pb-16 px-4 bg-gradient-to-b from-blue-50 to-white">
-        <motion.div initial="hidden" animate="visible" variants={fadeIn} className="max-w-3xl mx-auto text-center">
-          <span className="inline-flex px-4 py-1.5 bg-[#C58718]/10 text-[#C58718] text-xs font-semibold rounded-full border border-[#C58718]/20 mb-4">About Me</span>
-          <h1 className="text-5xl sm:text-6xl font-bold text-[#11120D] mb-4">Rajesh Kumar Sarkar</h1>
-          <p className="text-xl text-gray-500">Web & App Developer | Freelancer | YouTuber</p>
-        </motion.div>
+    <div className="pt-16">
+      {/* Hero Section */}
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-center mb-16"
+          >
+            <h1 className="text-5xl md:text-6xl font-bold mb-6">
+              About <span className="gradient-text">Pravaaha</span>
+            </h1>
+            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+              We are a passionate team of digital experts dedicated to transforming businesses through innovative technology solutions.
+            </p>
+          </motion.div>
+        </div>
       </section>
 
-      <motion.section initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn} className="py-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-white rounded-2xl border p-8 sm:p-12 shadow-sm">
-            <h2 className="text-3xl font-bold text-[#11120D] mb-6">Pravaaha Digital</h2>
-            <blockquote className="border-l-4 border-[#C58718] pl-6 py-4 mb-8 text-gray-600 italic text-lg">
-              “Pravaaha” means “flow” — a continuous flow of code, creativity, and digital solutions.
-            </blockquote>
-            <p className="text-gray-600 mb-10 leading-relaxed">
-              I’m a full‑stack developer specializing in custom website and application development. With a passion for clean code and user‑centric design, I help businesses and startups turn their ideas into powerful digital products.
-            </p>
-
-            <h3 className="text-2xl font-bold text-[#11120D] mb-6">Technical Expertise</h3>
-            <div className="grid sm:grid-cols-2 gap-6 mb-12">
-              {[
-                ["💻", "Frontend", "React, Next.js, Tailwind CSS, Framer Motion"],
-                ["⚙️", "Backend", "Node.js, Express, MongoDB, REST APIs"],
-                ["📱", "Mobile", "React Native, Flutter"],
-                ["☁️", "Cloud & DevOps", "AWS, Vercel, Git, CI/CD"],
-              ].map(([emoji, title, desc], i) => (
-                <motion.div key={i} whileHover={{ scale: 1.02 }} className="bg-gray-50 rounded-xl p-6 border border-gray-100">
-                  <div className="text-3xl mb-3">{emoji}</div>
-                  <h4 className="font-bold text-lg text-[#11120D]">{title}</h4>
-                  <p className="text-gray-500 text-sm">{desc}</p>
-                </motion.div>
-              ))}
-            </div>
-
-            <h3 className="text-2xl font-bold text-[#11120D] mb-6">Business Details</h3>
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm">
-                <tbody className="divide-y">
-                  {[
-                    [User, "Name", "Rajesh Kumar Sarkar"],
-                    [Briefcase, "Business", "Pravaaha Digital"],
-                    [Award, "Type", "Freelancer"],
-                    [MapPin, "Location", "Shyamganj Para, Kalna, WB – 713409"],
-                  ].map(([Icon, label, value], i) => (
-                    <motion.tr key={i} initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.1 }} viewport={{ once: true }}>
-                      <td className="py-4 pr-4 font-semibold whitespace-nowrap">
-                        <Icon className="w-5 h-5 inline mr-2 text-[#C58718]" />
-                        {label}
-                      </td>
-                      <td className="py-4">{value}</td>
-                    </motion.tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+      {/* Stats Section */}
+      <section className="py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {stats.map((stat, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                className="text-center"
+              >
+                <stat.icon className="text-4xl text-indigo-500 mx-auto mb-4" />
+                <div className="text-3xl font-bold gradient-text mb-2">{stat.value}</div>
+                <div className="text-gray-400">{stat.label}</div>
+              </motion.div>
+            ))}
           </div>
         </div>
-      </motion.section>
-    </>
-  );
+      </section>
+
+      {/* Story Section */}
+      <section className="py-16 bg-[#1e293b]/50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+            >
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">
+                Our <span className="gradient-text">Story</span>
+              </h2>
+              <p className="text-gray-300 mb-4 leading-relaxed">
+                Founded in 2020, Pravaaha Digital started with a simple mission: to help businesses 
+                thrive in the digital age. What began as a small team of passionate developers has 
+                grown into a full-service digital agency serving clients worldwide.
+              </p>
+              <p className="text-gray-300 mb-4 leading-relaxed">
+                We believe that every business deserves access to world-class digital solutions. 
+                Our team combines technical expertise with creative innovation to deliver results 
+                that exceed expectations.
+              </p>
+              <p className="text-gray-300 leading-relaxed">
+                Today, we're proud to have delivered over 150 successful projects across 20+ 
+                countries, helping businesses of all sizes achieve their digital goals.
+              </p>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              className="glass-card p-8"
+            >
+              <div className="aspect-w-16 aspect-h-9 rounded-lg bg-gradient-to-br from-indigo-500/20 to-purple-500/20 flex items-center justify-center">
+                <span className="text-8xl">🚀</span>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Values Section */}
+      <section className="py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="text-3xl md:text-4xl font-bold text-center mb-12"
+          >
+            Our <span className="gradient-text">Values</span>
+          </motion.h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {values.map((value, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                className="glass-card p-6 text-center hover-glow"
+              >
+                <div className={`w-16 h-16 rounded-xl bg-gradient-to-br ${value.color} p-4 mb-4 mx-auto`}>
+                  <div className="w-full h-full bg-white/20 rounded-lg" />
+                </div>
+                <h3 className="text-xl font-semibold text-white mb-3">{value.title}</h3>
+                <p className="text-gray-400">{value.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <CTASection />
+    </div>
+  )
 }
